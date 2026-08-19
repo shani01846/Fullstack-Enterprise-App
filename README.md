@@ -1,89 +1,176 @@
-🎟️ Chinese Auction Management System
-Full-Stack Web Application (ASP.NET Core Web API + Angular)
+````markdown
+# 🎟️ Chinese Auction Management System
 
-This project is a full-stack web application designed to manage a Chinese auction system, combining a robust backend built with ASP.NET Core Web API and a modern frontend developed using Angular.
+**Full-Stack Web Application — ASP.NET Core Web API + Angular**
 
-The system supports the complete auction lifecycle — from donating prizes, through ticket purchases, to conducting raffles and selecting winners.
+A robust full-stack web application designed to manage the complete Chinese auction lifecycle — from prize donations and ticket purchases to automated raffles and winner selection.
 
-🧩 Project Overview
+---
 
-The system includes several types of users, each with different roles and permissions:
+## 🧩 Project Overview
 
-👤 Donors
+The system provides role-based access for three primary user types:
 
-Can donate prizes to be included in the auction
+- 👤 **Donors** — Donate prizes to the auction, including details such as title, description, and category.
+- 🛒 **Buyers** — Browse available prizes and purchase raffle tickets for specific items.
+- 🛠️ **Administrators** — Manage users, prizes, and purchases, execute raffles, and review winning results.
 
-Each prize contains details such as name, description, and category
+---
 
-Donated prizes are displayed to buyers in the system
+## ⚙️ Tech Stack
 
-🛒 Buyers
+### Backend
 
-Can browse available prizes
+- **Framework:** ASP.NET Core Web API
+- **ORM:** Entity Framework Core
+- **Database:** SQL Server
+- **Authentication:** JWT Authentication
+- **Security:** Custom Middleware for Logging and Rate Limiting
 
-Purchase raffle tickets for specific prizes
+### Frontend
 
-Each ticket represents a chance to win in the raffle
+- **Framework:** Angular
+- **Language:** TypeScript
+- **API Communication:** RESTful APIs
+- **Authorization:** Role-Based Access Control (RBAC)
 
-🛠️ Administrator
+---
 
-Manages users, prizes, and purchases
+## 🔐 Key Features & Security
 
-Can run raffles at scheduled times
+- **Authentication & Authorization**
+  - Secure JWT-based authentication.
+  - Role-based endpoint protection for `Admin`, `Donor`, and `Buyer`.
 
-Views raffle results and winning tickets
+- **Prize Management**
+  - Donors can submit prizes with relevant details.
+  - Administrators can manage and review donated prizes.
 
-⚙️ Technologies Used
-Backend
+- **Ticket Management**
+  - Buyers can browse available prizes.
+  - Buyers can purchase raffle tickets for selected prizes.
 
-ASP.NET Core Web API
+- **Automated Raffles**
+  - Administrators can execute raffles.
+  - Winners are selected automatically based on purchased tickets.
 
-Entity Framework Core
+- **Data Integrity**
+  - Relational database design using Entity Framework Core.
+  - Proper entity relationships and transactional operations.
 
-SQL Server
+- **Error Handling & Middleware**
+  - Centralized logging.
+  - API rate limiting.
+  - Structured error handling for improved reliability and security.
 
-JWT Authentication
+---
 
-Custom Middleware (Logging, Rate Limiting)
+## 🚀 Getting Started
 
-Frontend
+### Prerequisites
 
-Angular
+Make sure the following tools are installed:
 
-TypeScript
+- [.NET SDK](https://dotnet.microsoft.com/)
+- [Node.js & npm](https://nodejs.org/)
+- [Angular CLI](https://angular.dev/tools/cli)
+- SQL Server
 
-RESTful API communication
+---
 
-Role-based access control
+### 📥 Installation
 
-🔐 Security & Authorization
+#### 1. Clone the Repository
 
-Secure authentication using JWT tokens
+```bash
+git clone https://github.com/YourUsername/Your-Repo-Name.git
+cd Your-Repo-Name
+````
 
-Role-based authorization (Admin / Donor / Buyer)
+#### 2. Backend Setup
 
-Protected endpoints for sensitive operations
+Navigate to the backend project:
 
-🎯 Project Goals
+```bash
+cd Backend
+```
 
-This project was developed as an educational and practical implementation demonstrating:
+Restore the required dependencies:
 
-Client–server architecture
+```bash
+dotnet restore
+```
 
-RESTful API design
+Update the database using Entity Framework Core:
 
-Authentication and authorization
+```bash
+dotnet ef database update
+```
 
-Database modeling and relationships
+Run the API:
 
-Integration between backend and frontend
+```bash
+dotnet run
+```
 
-🚀 Future Enhancements
+#### 3. Frontend Setup
 
-Payment gateway integration
+Open a new terminal and navigate to the frontend:
 
-Advanced raffle statistics
+```bash
+cd Frontend
+```
 
-Admin dashboard with analytics
+Install the required dependencies:
 
-Email notifications for winners
+```bash
+npm install
+```
+
+Start the Angular development server:
+
+```bash
+ng serve
+```
+
+The application will be available at:
+
+```text
+http://localhost:4200/
+```
+
+---
+
+## 🎯 Project Goals
+
+This project demonstrates practical implementation of:
+
+* Clean client-server architecture.
+* RESTful API design and best practices.
+* Role-Based Access Control (RBAC).
+* JWT authentication and authorization.
+* Robust relational database modeling.
+* Entity Framework Core integration.
+* Middleware-based logging and rate limiting.
+* Seamless integration between a C# backend and Angular frontend.
+
+---
+
+## 🔮 Future Enhancements
+
+Potential future improvements include:
+
+* 💳 Payment gateway integration.
+* 📊 Advanced raffle analytics dashboard.
+* 📧 Automated email notifications for winners.
+* 📈 Enhanced reporting and auction statistics.
+* 🔔 Real-time notifications for auction events.
+
+---
+
+## 📄 License
+
+This project is intended for educational and demonstration purposes.
+
+```
+```
