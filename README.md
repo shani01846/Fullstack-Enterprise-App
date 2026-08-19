@@ -1,4 +1,3 @@
-````markdown
 # 🎟️ Chinese Auction Management System
 
 **Full-Stack Web Application — ASP.NET Core Web API + Angular**
@@ -11,9 +10,9 @@ A robust full-stack web application designed to manage the complete Chinese auct
 
 The system provides role-based access for three primary user types:
 
-- 👤 **Donors** — Donate prizes to the auction, including details such as title, description, and category.
-- 🛒 **Buyers** — Browse available prizes and purchase raffle tickets for specific items.
-- 🛠️ **Administrators** — Manage users, prizes, and purchases, execute raffles, and review winning results.
+* 👤 **Donors** — Donate prizes to the auction, including details such as title, description, and category.
+* 🛒 **Buyers** — Browse available prizes and purchase raffle tickets for specific items.
+* 🛠️ **Administrators** — Manage users, prizes, and purchases, execute raffles, and review winning results.
 
 ---
 
@@ -21,47 +20,53 @@ The system provides role-based access for three primary user types:
 
 ### Backend
 
-- **Framework:** ASP.NET Core Web API
-- **ORM:** Entity Framework Core
-- **Database:** SQL Server
-- **Authentication:** JWT Authentication
-- **Security:** Custom Middleware for Logging and Rate Limiting
+* **Framework:** ASP.NET Core Web API
+* **ORM:** Entity Framework Core
+* **Database:** SQL Server
+* **Authentication:** JWT Authentication
+* **Security:** Custom Middleware for Logging and Rate Limiting
 
 ### Frontend
 
-- **Framework:** Angular
-- **Language:** TypeScript
-- **API Communication:** RESTful APIs
-- **Authorization:** Role-Based Access Control (RBAC)
+* **Framework:** Angular
+* **Language:** TypeScript
+* **API Communication:** RESTful APIs
+* **Authorization:** Role-Based Access Control (RBAC)
 
 ---
 
 ## 🔐 Key Features & Security
 
-- **Authentication & Authorization**
-  - Secure JWT-based authentication.
-  - Role-based endpoint protection for `Admin`, `Donor`, and `Buyer`.
+* **Authentication & Authorization**
 
-- **Prize Management**
-  - Donors can submit prizes with relevant details.
-  - Administrators can manage and review donated prizes.
+  * Secure JWT-based authentication.
+  * Role-based endpoint protection for `Admin`, `Donor`, and `Buyer`.
 
-- **Ticket Management**
-  - Buyers can browse available prizes.
-  - Buyers can purchase raffle tickets for selected prizes.
+* **Prize Management**
 
-- **Automated Raffles**
-  - Administrators can execute raffles.
-  - Winners are selected automatically based on purchased tickets.
+  * Donors can submit prizes with relevant details.
+  * Administrators can manage and review donated prizes.
 
-- **Data Integrity**
-  - Relational database design using Entity Framework Core.
-  - Proper entity relationships and transactional operations.
+* **Ticket Management**
 
-- **Error Handling & Middleware**
-  - Centralized logging.
-  - API rate limiting.
-  - Structured error handling for improved reliability and security.
+  * Buyers can browse available prizes.
+  * Buyers can purchase raffle tickets for selected prizes.
+
+* **Automated Raffles**
+
+  * Administrators can execute raffles.
+  * Winners are selected automatically based on purchased tickets.
+
+* **Data Integrity**
+
+  * Relational database design using Entity Framework Core.
+  * Proper entity relationships and transactional operations.
+
+* **Error Handling & Middleware**
+
+  * Centralized logging.
+  * API rate limiting.
+  * Structured error handling for improved reliability and security.
 
 ---
 
@@ -71,10 +76,10 @@ The system provides role-based access for three primary user types:
 
 Make sure the following tools are installed:
 
-- [.NET SDK](https://dotnet.microsoft.com/)
-- [Node.js & npm](https://nodejs.org/)
-- [Angular CLI](https://angular.dev/tools/cli)
-- SQL Server
+* [.NET SDK](https://dotnet.microsoft.com/)
+* [Node.js & npm](https://nodejs.org/)
+* [Angular CLI](https://angular.dev/tools/cli)
+* SQL Server
 
 ---
 
@@ -85,7 +90,7 @@ Make sure the following tools are installed:
 ```bash
 git clone https://github.com/YourUsername/Your-Repo-Name.git
 cd Your-Repo-Name
-````
+```
 
 #### 2. Backend Setup
 
@@ -112,6 +117,8 @@ Run the API:
 ```bash
 dotnet run
 ```
+
+---
 
 #### 3. Frontend Setup
 
@@ -171,6 +178,3 @@ Potential future improvements include:
 ## 📄 License
 
 This project is intended for educational and demonstration purposes.
-
-```
-```
