@@ -1,0 +1,27 @@
+# שלב הבנייה
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+# יצירת תיקיית עבודה בתוך דוקר (לא במחשב שלך!)
+WORKDIR /build
+
+# העתקת כל הקבצים מהתיקייה שלך (server) לתוך התיקייה הוירטואלית build
+COPY . .
+
+# כניסה לתיקייה שבה נמצא הפרויקט (בתוך דוקר)
+WORKDIR /build/src
+
+# הרצת הפקודות
+RUN dotnet restore "src.csproj"
+RUN dotnet publish "src.csproj" -c Release -o /publish --no-restore
+
+# שלב ההרצה
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+EXPOSE 8080
+
+# העתקה מהתיקייה הוירטואלית /publish לתיקייה הוירטואלית /app
+COPY --from=build /publish .
+
+ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+ENTRYPOINT ["dotnet", "src.dll"]

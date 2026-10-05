@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StoreApi.DTOs;
 using StoreApi.Interfaces;
+using System.Text.Json;
+using Microsoft.Extensions.Caching.Distributed;
 namespace a.Controllers
 {
 
@@ -12,18 +14,38 @@ namespace a.Controllers
     {
         private readonly IPresentService _presentService;
         private readonly ILogger<PresentController> _logger;
+        private readonly IDistributedCache _cache;
 
         public PresentController(
             IPresentService presentService,
-            ILogger<PresentController> logger)
+            ILogger<PresentController> logger,IDistributedCache cache)
         {
             _presentService = presentService;
             _logger = logger;
+            _cache = cache;
         }
         [HttpGet("paged")]
         public async Task<ActionResult<PagedResult<PresentDto>>> GetAllPaged([FromQuery] PaginationParams paginationParams)
         {
+            string cacheKey = "all-products";
+            var cachedData  = await _cache.GetStringAsync(cacheKey);
+            if(!string.IsNullOrEmpty(cachedData))
+            {
+                _logger.LogInformation("Data retrieved from cache.");
+                var productsFromCache = JsonSerializer.Deserialize<PagedResult<PresentDto>>(cachedData);
+                return Ok(productsFromCache);
+            }
+
+            _logger.LogInformation("Data retrieved from database.");
+
             var presents = await _presentService.GetAllPresentsPagedAsync(paginationParams);
+
+
+            var cacheOptions = new DistributedCacheEntryOptions()
+            .SetAbsoluteExpiration(TimeSpan.FromSeconds(300));
+            var serializedData = JsonSerializer.Serialize(presents);
+        await _cache.SetStringAsync(cacheKey, serializedData, cacheOptions);
+
             return Ok(presents);
         }
 

@@ -1,0 +1,49 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: a-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: a-db
+    environment:
+      - MSSQL_SA_PASSWORD=shani01846*
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+    healthcheck:
+      test:  /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P shani01846* -C -Q "SELECT 1" -b || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5124:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=storedb;User Id=sa;Password=shani01846*;TrustServerCertificate=True;"
+      Redis_ConnectionString: "redis:6379"
+
+    depends_on:
+     redis:
+       condition: service_healthy
+     sqlserver:
+      condition: service_healthy
+
+
+volumes:
+  sqlserver-data:
