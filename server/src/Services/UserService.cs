@@ -101,8 +101,8 @@ namespace a.Services
         public async Task<UserDto?> UpdateUserAsync(int id, CreateUserDto updateDto)
         {
             var existingUser = await _userRepository.GetByIdAsync(id);
-            if (existingUser != null) return null;
-            if(updateDto != null && updateDto.Email!=existingUser.Email)
+            if (existingUser == null || updateDto == null) return null;
+            if (updateDto.Email != existingUser.Email)
             {
                 if(await _userRepository.EmailExistsAsync(updateDto.Email))
                 {

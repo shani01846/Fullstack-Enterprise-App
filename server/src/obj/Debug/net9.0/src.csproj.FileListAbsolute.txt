@@ -324,4 +324,3 @@ D:\לימודים\שנה ב\projects\Angular_Api\server\src\bin\Debug\net9.0\Mic
 D:\לימודים\שנה ב\projects\Angular_Api\server\src\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
 D:\לימודים\שנה ב\projects\Angular_Api\server\src\bin\Debug\net9.0\StackExchange.Redis.dll
 D:\לימודים\שנה ב\projects\Angular_Api\server\src\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll
-D:\לימודים\שנה ב\projects\Angular_Api\server\src\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
